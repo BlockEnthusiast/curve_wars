@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+
+    <div class="left-nav">
+      {#
+      <!-- <a href="{{ url_for('home_bp.home') }}">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" alt="logo"/>
+      </a> -->
+      #}
+        <a href="{{ url_for('address_bp.index') }}">Addresses</a>
+        <a href="{{ url_for('contract_bp.index') }}">Contracts</a>
+        <a href="{{ url_for('token_bp.index') }}">Tokens</a>
+      {#
+        <!-- <a href="{{ url_for('home_bp.about') }}">About</a>
+        <a href="{{ url_for('home_bp.contact') }}">Contact</a> -->
+      #}
+    </div>
+    <div class="right-nav">
+      <a href="{{ url_for('transfer_bp.index') }}">Transfers</a>
+      <a href="{{ url_for('transaction_bp.index') }}">Transactions</a>
+      <a href="{{ url_for('curve_dashboard_bp.index') }}">Curve Dashboard</a>
+  </div>
+</nav>

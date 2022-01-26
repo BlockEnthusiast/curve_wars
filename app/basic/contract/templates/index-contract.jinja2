@@ -1,0 +1,60 @@
+{% extends "layout.jinja2" %}
+
+{#
+<!-- {% block pagestyles %}
+  {% assets "profile_less_bundle" %}
+    <link href="{{ ASSET_URL }}" rel="stylesheet" type="text/css">
+  {% endassets %}
+{% endblock %} -->
+#}
+
+{% block content %}
+  {% include "nav.jinja2" %}
+
+  <div class="bs-docs-section">
+    <div class="row">
+          {#
+          <!-- <div class="user-meta">
+            <div class="user-title meta"><span class="meta-name">Title:</span> <span>{{ job }}</span></div>
+            <div class="user-location meta"><span class="meta-name">Address:</span> <span>{{ current_user.address }}</span></div>
+            <div class="user-location meta"><span class="meta-name">Birthday:</span> <span>{{ current_user.birthdate }}</span></div>
+            <!-- <a href="{{ current_user.website }}">{{ current_user.website }}</a></div> -->
+          #}
+            <h2 class="text-info"> Contracts Tracked: </h2>
+            {% if contracts %}
+                <table class="table table-hover">
+                  <tr scope="col">
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Symbol</th>
+                    <th>Address</th>
+                    <th>ABI</th>
+                    <th>Curve Type</th>
+                    <th>Curve Identifier</th>
+
+                  </tr>
+                  {% for contract in contracts %}
+
+                  <tr scope="row">
+                    <th scope="col">{{ contract.id }}</th>
+                    <td>{{ contract.address.name }}</td>
+                    <td>{{ contract.address.symbol }}</td>
+                    <td>{{ contract.address.address }}</td>
+                    <td>{{ contract.abi }}</td>
+                    <td>{{ contract.curve.type }}</td>
+                    <td>{{ contract.curve.identifier }}</td>
+                  </tr>
+
+            {% endfor %}
+            </table>
+          {% else %}
+            <h2> Don't have any contracts added... </h2>
+          {% endif %}
+        </div>
+      </div>
+
+{#
+  <!-- {% include "blueprintinfo.jinja2" %} -->
+#}
+
+{% endblock %}

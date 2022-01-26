@@ -1,0 +1,56 @@
+{% extends "layout.jinja2" %}
+
+{#
+<!-- {% block pagestyles %}
+  {% assets "profile_less_bundle" %}
+    <link href="{{ ASSET_URL }}" rel="stylesheet" type="text/css">
+  {% endassets %}
+{% endblock %} -->
+#}
+{% include "nav.jinja2" %}
+{% block content %}
+
+
+  <div class="bs-docs-section">
+    <div class="page-header">
+          <h1>{{ title }}</h1>
+    </div>
+    <div class="row">
+          {#
+          <!-- <div class="user-meta">
+            <div class="user-title meta"><span class="meta-name">Title:</span> <span>{{ job }}</span></div>
+            <div class="user-location meta"><span class="meta-name">Address:</span> <span>{{ current_user.address }}</span></div>
+            <div class="user-location meta"><span class="meta-name">Birthday:</span> <span>{{ current_user.birthdate }}</span></div>
+            <!-- <a href="{{ current_user.website }}">{{ current_user.website }}</a></div> -->
+          #}
+            <h2 class="text-info"> Contracts Tracked: </h2>
+            {% if curve_counts %}
+                <table class="table table-hover">
+                  <tr>
+                    <th scope="col">Tag</th>
+                    <td>Count</td>
+                  </tr>
+                {% for k in curve_counts |sort() %}
+                    {#<!-- <img class="product-image" src="{{ product.image }}" alt="profile"/> --> #}
+                    {% if curve_counts[k] > 0 %}
+                    <tr class="table-info">
+                    {% else %}
+                    <tr class="table-danger">
+                    {% endif %}
+                      <th scope="row">{{ k }}</th>
+                      <td> {{ curve_counts[k] }}</td>
+                    </tr>
+                {% endfor %}
+                </table>
+              {% else %}
+                <p> Don't have anything added... </p>
+              {% endif %}
+        </div>
+      </div>
+      {% include "dash-contracts.jinja2" %}
+
+{#
+  <!-- {% include "blueprintinfo.jinja2" %} -->
+#}
+
+{% endblock %}
